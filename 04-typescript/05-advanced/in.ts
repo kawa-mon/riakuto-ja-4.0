@@ -13,4 +13,4 @@ const figMap: FigMap = {
   two: 2,
   three: 3,
 }
-figMap.four = 4
+// figMap.four = 4
