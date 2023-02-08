@@ -8,5 +8,7 @@ class Rectangle {
     this.sideB = sideB
   }
 
-  getArea = () => this.sideA + this.sideB
+  getArea = () => this.sideA * this.sideB
 }
+
+export { Rectangle }
