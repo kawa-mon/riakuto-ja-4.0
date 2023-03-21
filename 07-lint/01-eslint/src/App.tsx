@@ -1,13 +1,13 @@
-import { type FC, useState } from 'react'
-import viteLogo from '../public/vite.svg'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { type FC, useState } from 'react';
+import viteLogo from '../public/vite.svg';
+import reactLogo from './assets/react.svg';
+import './App.css';
 
-const title = import.meta.env.VITE_APP_TITLE
-console.dir(import.meta.env)
+const title = import.meta.env.VITE_APP_TITLE;
+console.dir(import.meta.env);
 
 const App: FC = () => {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
     <div className="App">
@@ -24,7 +24,7 @@ const App: FC = () => {
       <div className="card">
         <button
           onClick={() => {
-            setCount((count) => count + 1)
+            setCount((count) => count + 1);
           }}
         >
           count is {count}
@@ -37,7 +37,7 @@ const App: FC = () => {
         Click on the Vite and React logos to learn more
       </p>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
