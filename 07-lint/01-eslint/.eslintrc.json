@@ -1,14 +1,23 @@
 {
   "env": {
     "browser": true,
-    "es2021": true
+    "es2022": true
   },
-  "extends": ["plugin:react/recommended", "standard-with-typescript"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:react/recommended",
+    "standard-with-typescript"
+  ],
   "overrides": [],
   "parserOptions": {
     "ecmaVersion": "latest",
+    "tsconfigRootDir": ".",
+    "project": ["./tsconfig.json"],
     "sourceType": "module"
   },
-  "plugins": ["react"],
-  "rules": {}
+  "plugins": ["@typescript-eslint", "react"],
+  "rules": {},
+  "settings": { "react": { "version": "detect" } }
 }
