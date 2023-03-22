@@ -1,41 +1,48 @@
-import { type FC, useState } from 'react';
-import viteLogo from '../public/vite.svg';
-import reactLogo from './assets/react.svg';
+import type { FC } from 'react';
+import { Heading } from '@chakra-ui/react';
+import CharacterList from 'components/CharacterList';
+import type { Character } from 'components/CharacterList';
 import './App.css';
 
-const title = import.meta.env.VITE_APP_TITLE;
-console.dir(import.meta.env);
-
 const App: FC = () => {
-  const [count, setCount] = useState(0);
+  const characters: Character[] = [
+    {
+      id: 1,
+      name: '桜木花道',
+      grade: 1,
+      height: 189.2,
+    },
+    {
+      id: 2,
+      name: '流川 楓',
+      grade: 1,
+      height: 187,
+    },
+    {
+      id: 3,
+      name: '宮城リョータ',
+      grade: 2,
+      height: 168,
+    },
+    {
+      id: 4,
+      name: '三井 寿',
+      grade: 3,
+    },
+    {
+      id: 5,
+      name: '赤木剛憲',
+      grade: 3,
+      height: 197,
+    },
+  ];
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <p>{title}</p>
-      <div className="card">
-        <button
-          onClick={() => {
-            setCount((count) => count + 1);
-          }}
-        >
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <div className="container">
+      <Heading size="lg" as="h1" my={12}>
+        『SLAM DUNK』登場人物
+      </Heading>
+      <CharacterList school="湘北高校" characters={characters} />
     </div>
   );
 };
