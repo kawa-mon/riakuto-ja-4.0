@@ -11,8 +11,12 @@ import {
 
 const Counter: FC = () => {
   const [count, setCount] = useState(0);
-  const increment = () => { setCount((c) => c + 1); };
-  const reset = () => { setCount(0); };
+  const increment = () => {
+    setCount((c) => c + 1);
+  };
+  const reset = () => {
+    setCount(0);
+  };
 
   return (
     <Box p={3} w="sm" borderWidth="1px" borderRadius="lg" boxShadow="base">
