@@ -1,25 +1,34 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { SyntheticEvent } from 'react';
 import { getPrimes } from 'utils/prime';
 
 const useTimer = (maxCount: number): [number, boolean, () => void] => {
   const [timeLeft, setTimeLeft] = useState(maxCount);
   const primes = useMemo(() => getPrimes(maxCount), [maxCount]);
+  const intervalId = useRef<ReturnType<typeof setInterval>>();
   const tick = () => {
     setTimeLeft((t) => t - 1);
   };
-  const reset = (event?: SyntheticEvent) => {
-    event?.stopPropagation();
-    setTimeLeft(maxCount);
-  };
+  const reset = useCallback(
+    (event?: SyntheticEvent) => {
+      event?.stopPropagation();
+
+      if (intervalId.current !== undefined) {
+        clearInterval(intervalId.current);
+      }
+      setTimeLeft(maxCount);
+      intervalId.current = setInterval(tick, 1000);
+    },
+    [maxCount]
+  );
 
   useEffect(() => {
-    const timerId = setInterval(tick, 1000);
+    reset();
 
     return () => {
-      clearInterval(timerId);
+      clearInterval(intervalId.current);
     };
-  }, []);
+  }, [reset]);
 
   useEffect(() => {
     if (timeLeft === 0) reset();
